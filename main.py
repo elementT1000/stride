@@ -6,7 +6,6 @@ import plnconstants
 import write_angles
 import pandas as pd
 
-#Hello, this is an edit from the pavilion laptop
 
 path_config_file = r'C:\Users\14124\Running_Analysis\Sagittal\config.yaml'
 script, root_dir = 'test.py', r'C:\Users\14124\note_to_script\root_dir'# change to argv in order to accept command line arguments
