@@ -6,10 +6,9 @@ import plnconstants
 import write_angles
 import pandas as pd
 
-#Hello, this is an edit from the pavilion laptop
 
-path_config_file = r'C:\Users\14124\Running_Analysis\Sagittal\config.yaml'
-script, root_dir = 'test.py', r'C:\Users\14124\note_to_script\root_dir'# change to argv in order to accept command line arguments
+path_config_file = r'C:\Users\trott\Running_Analysis\Sagittal\config.yaml'
+script, root_dir = 'test.py', r'C:\Users\trott\stride\root_dir'# change to argv in order to accept command line arguments
 file_ext = ".MP4"
 
 def get_full_path_list(root_dir, file_ext):
@@ -99,8 +98,8 @@ def calculate_angles(h5_list):
 if __name__ == '__main__':
     #control flow
     flp = get_full_path_list(root_dir, '.MP4')
-    deeplabcut.analyze_videos(path_config_file, flp, videotype='.MP4')
-    deeplabcut.create_labeled_video(path_config_file, flp, draw_skeleton=True, displaycropped=True, filtered=False)
+    #deeplabcut.analyze_videos(path_config_file, flp, videotype='.MP4')
+    #deeplabcut.create_labeled_video(path_config_file, flp, draw_skeleton=True, displaycropped=True, filtered=False)
     h5_list = get_file_list(root_dir, flp, "_filtered.h5", "_analyzed.h5")
     csv_path = calculate_angles(h5_list)
     fin_vid_list = get_file_list(root_dir, flp, "_analyzed_labeled.mp4", "_labeled.mp4")
