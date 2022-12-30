@@ -4,6 +4,8 @@ import pandas as pd
 import time
 import math
 
+import warnings
+
 
 def load_h5(filepath: str):
     '''
@@ -23,87 +25,72 @@ def filter_low_prob(cols, threshold: float):
     cols.iloc[mask, :2] = np.nan
     return cols
 
-def row_runner(dataframe: object, vertex: str, orientation: str, anticlockwise=1, dev_from_straight=False):
-    angle = dict()
-    angle[vertex] = dataframe.apply(lambda row :
-        angle_calc(coordinates=row, anticlock=anticlockwise, orient=orientation, dev=dev_from_straight), axis=1
-    ).to_numpy()
-    angles = pd.DataFrame.from_dict(angle)
-
-    return angles
-
-#I may seperate these out into seperate functions because the parameters used to make the arguements are becoming more
-#extensive then necessary 
-def angle_calc(coordinates, anticlock, orient="vertical", dev=False):
-    pos = coordinates.values
-    #print("The numpy array is: " + str(pos))
-    series = int(pos.shape[0])
-    n = series//2 # n is equal to rows, if the series is x and y coordinates
-    pos = pos.reshape((n, 2))
-
-    full_circle_list = []
+def calculate_angles_from_coordinates(dataframe: object, vertex: str, orientation: str, anticlockwise=1, dev_from_straight=False):
+    coords = dataframe.values # Return a numpy array
+    n = int(coords.shape[1])//2 # n is equal to # of x,y groups
+    
     if n == 2:
-        x1, y1 = pos[0]
-        x2, y2 = pos[1]
-
-        single = angle_360(x1-x2, y1-y2)
+        x1, y1, x2, y2 = coords[:, 0], coords[:, 1], coords[:, 2], coords[:, 3]
+        full_circle_array = np.vectorize(angle_360)(x1-x2, y1-y2)
         
-        full_circle_list.append(single)
-
     elif n == 3:
-        x1, y1 = pos[0]
-        x2, y2 = pos[1]
-        x3, y3 = pos[2]
-
-        #still have to figure out how to do anticlockwise
-        pair1 = angle_360(x1-x2, y1-y2)
-        pair2 = angle_360(x3-x2, y3-y2)
-
-        full_circle_list = [pair1, pair2]
+        x1, y1, x2, y2, x3, y3 = coords[:, 0], coords[:, 1], coords[:, 2], coords[:, 3], coords[:, 4], coords[:, 5]
+        full_circle_array_1 = np.vectorize(angle_360)(x1-x2, y1-y2) 
+        full_circle_array_2 = np.vectorize(angle_360)(x3-x2, y3-y2)
+        final = abs(np.subtract(full_circle_array_1, full_circle_array_2))
+        if dev_from_straight:
+            final = abs(np.subtract(final, 180))
 
     else:
-        print("There is not a correct amount of joints selected for this system.")
+        print(f"There is not a correct amount of joints selected for this system. The n that was passed is {n}")
+        return
 
-    if orient == "hinge" and n == 3:
-        final = abs(full_circle_list[0] - full_circle_list[1])
-        #The following measures the deviation of the hinge point from a straight line
-        if dev:
-            final = abs(180 - final)
+    #Neutral measures with a standard unit circle operation, useful for disconnected lines
+    if orientation == "neutral" and n == 2:
+        def neutral_if_else(val, clock=anticlockwise):
+            if clock:
+                first_quadrant = np.add(180, val)
+                if first_quadrant > 360:
+                    first_quadrant -= 360
+            else:
+                first_quadrant = val
+            return first_quadrant
+        final = np.vectorize(neutral_if_else)(full_circle_array, anticlockwise)
 
-    elif orient == "neutral" and n == 2:
-        if anticlock:
-            first_quadrant = full_circle_list[0] + 180
-            if first_quadrant > 360:
-                first_quadrant -= 360
-        else:
-            first_quadrant = full_circle_list[0]
-            
-        final = first_quadrant
+    elif orientation == "vertical" and n == 2:
+        def vertical_if_else(val):
+            if val > 180:
+                return abs(270-val)
+            else:
+                return abs(90-val)
+        final = np.vectorize(vertical_if_else)(full_circle_array)
 
-    elif orient == "vertical" and n == 2:
-        if full_circle_list[0] > 180:
-            final = abs(270-full_circle_list[0])
-        else:
-            final = abs(90-full_circle_list[0])
+    elif orientation == "hinge" and n == 3:
+        pass
 
     else:
         print("It appears that the orientation string or the joints passed in do not fit a use case.")
 
-    if anticlock==0:
-        final = abs(360-final)
-        
-    return final
+    if anticlockwise==0:
+        final = abs(np.subtract(final, 360))
+    
+    return pd.DataFrame.from_dict({vertex: final})
 
 def angle_360(x: float, y: float):
     '''
     atan2 returns 0-180 for the top two quadrants and -180-0 for the bottom two, 
      so must correct to 0-360 degrees
-     For some reason, the values returned from this appear to be measured clockwise from the left horsizontal line.
+     *For some reason, the values returned from this appear to be measured clockwise from the left horsizontal line.
     '''
+    # Replace NaN values with 0
+    x = np.where(np.isnan(x), 0, x)
+    y = np.where(np.isnan(y), 0, y)
+
     ang = math.atan2(y, x)
     if ang < 0:
         ang += 2 * math.pi
     full_circle = (180 / math.pi) * ang
+    
     return full_circle
 
 def joint_filter(dataframe: object, joints: dict, pcutoff=0.6):
@@ -116,7 +103,7 @@ def joint_filter(dataframe: object, joints: dict, pcutoff=0.6):
     Ouput: 
         A pandas dataframe containing the x and y coordinates for the selected joints.
     '''
-    # added 'group_keys=True' on 12/25/22 because of warning
+    # added 'group_keys=False' on 12/25/22 because of warning
     '''FutureWarning: Not prepending group keys to the result index of transform-like apply. 
     In the future, the group keys will be included in the index, regardless of whether the applied function returns a like-indexed object.'''
     df_likely = dataframe.groupby("bodyparts", axis=1, group_keys=False).apply(filter_low_prob, threshold=pcutoff)
