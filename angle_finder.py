@@ -56,6 +56,9 @@ def calculate_angles_from_coordinates(dataframe: object, vertex: str, orientatio
             return first_quadrant
         final = np.vectorize(neutral_if_else)(full_circle_array, anticlockwise)
 
+    elif orientation == "horizontal" and n == 2:
+        final = abs(np.subtract(full_circle_array, 180))
+    
     elif orientation == "vertical" and n == 2:
         def vertical_if_else(val):
             if val > 180:

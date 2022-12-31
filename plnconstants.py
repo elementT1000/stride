@@ -19,21 +19,21 @@ CALCULATION_PARAMS = {
 ANTERIOR_FRONTAL_JOINTS = [
     #{'afWaist': ['LeftWaistline', 'RightWaistline']}, #Ignore ant. waistline for now due to data issues
     {'afLeftThigh': ['LeftWaistline', 'LeftVastusLat']}, #hip ad/ab + knee var/val
-    {'afLeftShin': ['LeftCoLig', 'LeftAnkle']},
-    {'afLeftAnkle': ['LeftAnkle', 'Left1Prox']},
+    {'afLeftShin': ['LeftCoLig', 'LeftAnkle']}, #knee var/val similar to heel in sagittal joints
+    {'afLeftAnkle': ['LeftCoLig', 'LeftAnkle', 'Left1Prox']},
     {'afLeftFoot': ['Left1Prox', 'Left5Prox']},
     {'afRightThigh': ['RightWaistline', 'RightVastusLat']}, #hip ad/ab + knee var/val
     {'afRightShin': ['RightCoLig', 'RightAnkle']},
-    {'afRightAnkle': ['RightAnkle', 'Right1Prox']},
+    {'afRightAnkle': ['RightCoLig', 'RightAnkle', 'Right1Prox']},
     {'afRightFoot': ['Right1Prox', 'Right5Prox']}
 ]
 
 POSTERIOR_FRONTAL_JOINTS = [
     {'pfWaist': ['LeftWaistLine', 'RightWaistLine']}, 
-    {'pfLeftFemurHead': ['LeftFemurHead', 'LeftKnee']}, #hip ad/ab + knee var/val
+    {'pfLeftFemurHead': ['LeftFemurHead', 'LeftKnee']}, 
     {'pfLeftKnee': ['LeftFemurHead', 'LeftKnee', 'LeftAnkle']},
     {'pfLeftAnkle': ['LeftKnee', 'LeftAnkle', 'LeftHeel']},
-    {'pfRightFemurHead': ['RightFemurHead', 'RightKnee']}, #hip ad/ab + knee var/val
+    {'pfRightFemurHead': ['RightFemurHead', 'RightKnee']}, 
     {'pfRightKnee': ['RightFemurHead', 'RightKnee', 'RightAnkle']},
     {'pfRightAnkle': ['RightKnee', 'RightAnkle', 'RightHeel']}
 ]
