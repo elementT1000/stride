@@ -47,11 +47,10 @@ def calculate_angles_from_coordinates(dataframe: object, vertex: str, orientatio
 
     #Neutral measures with a standard unit circle operation, useful for disconnected lines
     if orientation == "neutral" and n == 2:
-        def neutral_if_else(val, clock=anticlockwise):
-            if clock:
+        def neutral_if_else(val, anticlock):
+            if anticlock:
                 first_quadrant = np.add(180, val)
-                if first_quadrant > 360:
-                    first_quadrant -= 360
+                first_quadrant = np.where(first_quadrant > 360, first_quadrant - 360, first_quadrant)
             else:
                 first_quadrant = val
             return first_quadrant
@@ -82,15 +81,15 @@ def angle_360(x: float, y: float):
      so must correct to 0-360 degrees
      *For some reason, the values returned from this appear to be measured clockwise from the left horsizontal line.
     '''
-    # Replace NaN values with 0
-    x = np.where(np.isnan(x), 0, x)
-    y = np.where(np.isnan(y), 0, y)
-
-    ang = math.atan2(y, x)
-    if ang < 0:
-        ang += 2 * math.pi
-    full_circle = (180 / math.pi) * ang
-    
+    # Catch the NaN warning from the vectorization method
+    if np.isnan(x) or np.isnan(y):
+        full_circle = np.nan
+        return
+    else:
+        ang = math.atan2(y, x)
+        if ang < 0:
+            ang += 2 * math.pi
+        full_circle = (180 / math.pi) * ang
     return full_circle
 
 def joint_filter(dataframe: object, joints: dict, pcutoff=0.6):
