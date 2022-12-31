@@ -1,3 +1,7 @@
+sagittal_config_file = r'C:\Users\14124\stride\root_dir\config_files\sag_config.yaml'
+anterior_config_file = r'C:\Users\14124\stride\root_dir\config_files\af_config.yaml'
+posterior_config_file = r'C:\Users\14124\stride\root_dir\config_files\pf_config.yaml'
+
 SAGITTAL_JOINTS = [
     {'Arm': ['Shoulder', 'Elbow']},
     {'Hip': ['Shoulder', 'Hip', 'Knee']},

@@ -1,0 +1,97 @@
+    # Project definitions (do not edit)
+Task: Anterior_Frontal
+scorer: Ethan
+date: Sep19
+multianimalproject: false
+identity:
+
+    # Project path (change when moving around)
+project_path: C:\Users\14124\Running_Analysis\Anterior_Frontal
+
+    # Annotation data set configuration (and individual video cropping parameters)
+video_sets:
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\kb_0822_af_ns.MP4:
+    crop: 350, 730, 500, 1370
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\kb_0822_af_s.MP4:
+    crop: 350, 730, 500, 1370
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\kd_091322_af_ns.MP4:
+    crop: 350, 730, 500, 1370
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\kd_091322_af_s.MP4:
+    crop: 350, 730, 500, 1370
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\kg_091322_af_ns.MP4:
+    crop: 350, 730, 500, 1370
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\kg_091322_af_s.MP4:
+    crop: 350, 730, 500, 1370
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\kg_101222_af_s(1).MP4:
+    crop: 350, 730, 500, 1370
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\kg_101222_af_s.MP4:
+    crop: 350, 730, 500, 1370
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\lp_091322_af_ns.MP4:
+    crop: 350, 730, 500, 1370
+  C:\Users\14124\Running_Analysis\Anterior_Frontal\videos\lp_091322_af_s.MP4:
+    crop: 350, 730, 500, 1370
+bodyparts:
+- LeftWaistline # edge of the shorts
+- LeftVastusLat # actually the superior end of the lateral collateral ligament
+- LeftCoLig # the inferior end of the medial collateral ligament
+- LeftAnkle # medial malleolus 
+- Left1Prox # proximal head of the proximal phalange (1st)
+- Left5Prox
+- RightWaistline
+- RightVastusLat
+- RightCoLig
+- RightAnkle # medial malleolus 
+- Right1Prox
+- Right5Prox
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
+start: 0
+stop: 1
+numframes2pick: 30
+
+    # Plotting configuration
+skeleton:
+- - LeftWaistline
+  - LeftVastusLat
+- - LeftCoLig
+  - LeftAnkle
+- - LeftAnkle
+  - Left1Prox
+- - Left1Prox
+  - Left5Prox
+- - RightWaistline
+  - RightVastusLat
+- - RightCoLig
+  - RightAnkle
+- - RightAnkle
+  - Right1Prox
+- - Right1Prox
+  - Right5Prox
+skeleton_color: white
+pcutoff: 0.6
+dotsize: 5
+alphavalue: 0.7
+colormap: autumn
+
+    # Training,Evaluation and Analysis configuration
+TrainingFraction:
+- 0.95
+iteration: 1
+default_net_type: resnet_50
+default_augmenter: default
+snapshotindex: -1
+batch_size: 8
+
+    # Cropping Parameters (for analysis and outlier frame detection)
+cropping: true
+    #if cropping is true for analysis, then set the values here:
+x1: 350
+x2: 730
+y1: 500
+y2: 1370
+
+    # Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
+corner2move2:
+- 50
+- 50
+move2corner: true

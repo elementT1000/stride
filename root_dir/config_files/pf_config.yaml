@@ -1,0 +1,97 @@
+    # Project definitions (do not edit)
+Task: Frontal Plane Running
+scorer: Ethan
+date: Jul19
+multianimalproject: false
+identity:
+
+    # Project path (change when moving around)
+project_path: C:\Users\14124\Running_Analysis\Posterior_Frontal
+
+    # Annotation data set configuration (and individual video cropping parameters)
+video_sets:
+  #C:\Users\14124\Frontal_Running_Analyses\Ethan-2022-07-19\videos\jm_0822_pf_s.MP4:
+    #crop: 425, 805, 500, 1430
+
+  C:\Users\14124\Running_Analysis\Posterior_Frontal\videos\kd_091322_pf_ns.MP4:
+    crop: 400, 780, 500, 1430
+bodyparts:
+- RightWaistLine
+- RightFemurHead
+- RightKnee
+- RightAnkle
+- RightHeel
+- RightFirstMetatarsal
+- Right5thMetatarsal
+- LeftWaistLine
+- LeftFemurHead
+- LeftKnee
+- LeftAnkle
+- LeftHeel
+- LeftFirstMetatarsal
+- Left5thMetatarsal
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
+start: 0
+stop: 1
+numframes2pick: 30
+
+    # Plotting configuration
+skeleton:
+- - RightWaistLine
+  - LeftWaistLine
+- - RightFemurHead
+  - RightKnee
+- - RightKnee
+  - RightAnkle
+- - RightAnkle
+  - RightHeel
+- - RightHeel
+  - RightMTBJoint
+- - RightHeel
+  - Right5thMetatarsal
+- - RightFirstMetatarsal
+  - Right5thMetatarsal
+- - LeftFemurHead
+  - LeftKnee
+- - LeftKnee
+  - LeftAnkle
+- - LeftAnkle
+  - LeftHeel
+- - LeftHeel
+  - LeftMTBJoint
+- - LeftHeel
+  - Left5thMetatarsal
+- - LeftFirstMetatarsal
+  - Left5thMetatarsal
+
+skeleton_color: white
+pcutoff: 0.6
+dotsize: 7
+alphavalue: 0.7
+colormap: autumn
+
+    # Training,Evaluation and Analysis configuration
+TrainingFraction:
+- 0.95
+iteration: 2
+default_net_type: resnet_50
+default_augmenter: default
+snapshotindex: -1
+batch_size: 8
+
+    # Cropping Parameters (for analysis and outlier frame detection)
+cropping: true
+    #if cropping is true for analysis, then set the values here:
+x1: 325
+x2: 705
+y1: 500
+y2: 1400
+
+    # Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
+corner2move2:
+- 1000
+- 1000
+move2corner: true
