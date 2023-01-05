@@ -6,13 +6,10 @@ multianimalproject: false
 identity:
 
     # Project path (change when moving around)
-project_path: C:\Users\14124\Running_Analysis\Posterior_Frontal
+project_path: C:\Users\14124\stride\root_dir\config_files
 
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
-  #C:\Users\14124\Frontal_Running_Analyses\Ethan-2022-07-19\videos\jm_0822_pf_s.MP4:
-    #crop: 425, 805, 500, 1430
-
   C:\Users\14124\Running_Analysis\Posterior_Frontal\videos\kd_091322_pf_ns.MP4:
     crop: 400, 780, 500, 1430
 bodyparts:
@@ -30,6 +27,8 @@ bodyparts:
 - LeftHeel
 - LeftFirstMetatarsal
 - Left5thMetatarsal
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
 
     # Fraction of video to start/stop when extracting frames for labeling/refinement
 

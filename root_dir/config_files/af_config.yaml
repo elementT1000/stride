@@ -6,7 +6,7 @@ multianimalproject: false
 identity:
 
     # Project path (change when moving around)
-project_path: C:\Users\14124\Running_Analysis\Anterior_Frontal
+project_path: C:\Users\14124\stride\root_dir\config_files
 
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
@@ -43,6 +43,8 @@ bodyparts:
 - RightAnkle # medial malleolus 
 - Right1Prox
 - Right5Prox
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
 
     # Fraction of video to start/stop when extracting frames for labeling/refinement
 start: 0
