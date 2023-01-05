@@ -6,7 +6,7 @@ multianimalproject: false
 identity:
 
     # Project path (change when moving around)
-project_path: C:\Users\14124\Running_Analysis\Sagittal
+project_path: C:\Users\14124\stride\root_dir\config_files
 
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
@@ -156,6 +156,8 @@ bodyparts:
 - Big_Toe
 
     # Fraction of video to start/stop when extracting frames for labeling/refinement
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
 start: 0
 stop: 1
 numframes2pick: 20
@@ -195,8 +197,9 @@ batch_size: 8
     # Cropping Parameters (for analysis and outlier frame detection)
 cropping: true
     #if cropping is true for analysis, then set the values here:
+    #TODO: The framing for the sagittal plane is assymetrical, can their be different cropping values for different sides?
 x1: 150
-x2: 930
+x2: 1030
 y1: 250
 y2: 1450
 

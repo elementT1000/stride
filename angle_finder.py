@@ -4,8 +4,6 @@ import pandas as pd
 import time
 import math
 
-import warnings
-
 
 def load_h5(filepath: str):
     '''
@@ -59,11 +57,14 @@ def calculate_angles_from_coordinates(dataframe: object, vertex: str, orientatio
     if n == 2:
         x1, y1, x2, y2 = coords[:, 0], coords[:, 1], coords[:, 2], coords[:, 3]
         full_circle_array = np.vectorize(angle_360)(x1-x2, y1-y2)
+        full_circle_array = np.where(full_circle_array == None, np.nan, full_circle_array)
         
     elif n == 3:
         x1, y1, x2, y2, x3, y3 = coords[:, 0], coords[:, 1], coords[:, 2], coords[:, 3], coords[:, 4], coords[:, 5]
         full_circle_array_1 = np.vectorize(angle_360)(x1-x2, y1-y2) 
         full_circle_array_2 = np.vectorize(angle_360)(x3-x2, y3-y2)
+        full_circle_array_1 = np.where(full_circle_array_1 == None, np.nan, full_circle_array_1)
+        full_circle_array_2 = np.where(full_circle_array_2 == None, np.nan, full_circle_array_2)
         final = abs(np.subtract(full_circle_array_1, full_circle_array_2))
         if dev_from_straight:
             final = abs(np.subtract(final, 180))
@@ -93,7 +94,7 @@ def calculate_angles_from_coordinates(dataframe: object, vertex: str, orientatio
     elif orientation == "vertical" and n == 2:
         def vertical_if_else(val):
             if val > 180:
-                return abs(270-val)
+                return abs(270-val) 
             else:
                 return abs(90-val)
         final = np.vectorize(vertical_if_else)(full_circle_array)
@@ -106,7 +107,7 @@ def calculate_angles_from_coordinates(dataframe: object, vertex: str, orientatio
 
     if anticlockwise==0:
         final = abs(np.subtract(final, 360))
-    
+
     return pd.DataFrame.from_dict({vertex: final})
 
 def angle_360(x: float, y: float):

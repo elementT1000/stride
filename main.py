@@ -9,7 +9,7 @@ import pandas as pd
 import time
 
 
-script, root_dir = 'test.py', r'C:\Users\14124\stride\root_dir' # change to argv in order to accept command line arguments
+script, root_dir = 'main.py', r'C:\Users\14124\stride\root_dir\Subject_4' # change to argv in order to accept command line arguments
 file_ext = ".MP4"
 
 def get_full_path_list(root_dir, file_ext):
@@ -85,6 +85,7 @@ def parse_angles_from_h5_files(h5_list):
 
 if __name__ == '__main__':
     fpl = get_full_path_list(root_dir, '.MP4')
+    print(fpl)
 
     #Each inference is informed by a different config file, so we have to control the flow to those files
     for file in fpl:
