@@ -11,15 +11,6 @@ SAGITTAL_JOINTS = [
     {'Toe': ['Heel', 'Ball_of_Foot', 'Big_Toe']}
 ]
 
-CALCULATION_PARAMS = {
-    "Arm": {"orientation": "vertical",},
-    "Hip": {"orientation": "hinge", "anticlockwise": "default"},
-    "Knee": {"orientation": "hinge", "anticlockwise": "alt",},
-    "Ankle": {"orientation": "neutral", "anticlockwise": "default"},
-    "Heel": {"orientation": "neutral", "anticlockwise": "default"},
-    "Toe": {"orientation": "hinge", "anticlockwise": "default", "dev_from_straight": True,},
-}
-
 ANTERIOR_FRONTAL_JOINTS = [
     #{'afWaist': ['LeftWaistline', 'RightWaistline']}, #Ignore ant. waistline for now due to data issues
     {'afLeftThigh': ['LeftWaistline', 'LeftVastusLat']}, #hip ad/ab + knee var/val
@@ -41,3 +32,12 @@ POSTERIOR_FRONTAL_JOINTS = [
     {'pfRightKnee': ['RightFemurHead', 'RightKnee', 'RightAnkle']},
     {'pfRightAnkle': ['RightKnee', 'RightAnkle', 'RightHeel']}
 ]
+
+CALCULATION_PARAMS = {
+    "Arm": {"orientation": "vertical",},
+    "Hip": {"orientation": "hinge", "anticlockwise": "default"},
+    "Knee": {"orientation": "hinge", "anticlockwise": "alt",},
+    "Ankle": {"orientation": "neutral", "anticlockwise": "default"},
+    "Heel": {"orientation": "neutral", "anticlockwise": "default"},
+    "Toe": {"orientation": "hinge", "anticlockwise": "default", "dev_from_straight": True,},
+}

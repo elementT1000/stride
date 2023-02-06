@@ -11,7 +11,7 @@ project_path: C:\Users\14124\stride\root_dir\config_files
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
   C:\Users\14124\Running_Analysis\Posterior_Frontal\videos\kd_091322_pf_ns.MP4:
-    crop: 400, 780, 500, 1430
+    crop: 100, 900, 500, 1430
 bodyparts:
 - RightWaistLine
 - RightFemurHead
@@ -82,10 +82,10 @@ snapshotindex: -1
 batch_size: 8
 
     # Cropping Parameters (for analysis and outlier frame detection)
-cropping: true
+cropping: false
     #if cropping is true for analysis, then set the values here:
 x1: 325
-x2: 705
+x2: 900
 y1: 500
 y2: 1400
 
