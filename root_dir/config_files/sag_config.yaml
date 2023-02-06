@@ -145,6 +145,28 @@ video_sets:
   C:\Users\14124\Running_Analysis\Sagittal\videos\tt_0922_sr_ns.MP4:
     crop: 150, 930, 250, 1450
 
+  #Tony set 1
+  C:\Users\14124\Running_Analysis\Sagittal\videos\ba_091322_sl_s.MP4:
+    crop: 150, 930, 250, 1450
+  C:\Users\14124\Running_Analysis\Sagittal\videos\ba_091322_sr_s.MP4:
+    crop: 150, 930, 250, 1450
+  C:\Users\14124\Running_Analysis\Sagittal\videos\cs_091322_sl_s.MP4:
+    crop: 150, 930, 250, 1450
+  C:\Users\14124\Running_Analysis\Sagittal\videos\cs_091322_sr_s.MP4:
+    crop: 150, 930, 250, 1450
+  C:\Users\14124\Running_Analysis\Sagittal\videos\gr_100322_sl_ns.MP4:
+    crop: 150, 930, 250, 1450
+  C:\Users\14124\Running_Analysis\Sagittal\videos\gr_100322_sr_ns.MP4:
+    crop: 150, 930, 250, 1450
+  C:\Users\14124\Running_Analysis\Sagittal\videos\kd_091322_sl_s.MP4:
+    crop: 150, 930, 250, 1450
+  C:\Users\14124\Running_Analysis\Sagittal\videos\kd_091322_sr_s.MP4:
+    crop: 150, 930, 250, 1450
+  C:\Users\14124\Running_Analysis\Sagittal\videos\kg_091322_sl_ns.MP4:
+    crop: 150, 930, 250, 1450
+  C:\Users\14124\Running_Analysis\Sagittal\videos\kg_091322_sr_ns.MP4:
+    crop: 150, 930, 250, 1450
+
 bodyparts:
 - Shoulder
 - Elbow
@@ -188,7 +210,7 @@ colormap: autumn
     # Training,Evaluation and Analysis configuration
 TrainingFraction:
 - 0.95
-iteration: 2
+iteration: 3
 default_net_type: resnet_50
 default_augmenter: default
 snapshotindex: -1
@@ -198,8 +220,8 @@ batch_size: 8
 cropping: true
     #if cropping is true for analysis, then set the values here:
     #TODO: The framing for the sagittal plane is assymetrical, can their be different cropping values for different sides?
-x1: 150
-x2: 1030
+x1: 0
+x2: 1080
 y1: 250
 y2: 1450
 

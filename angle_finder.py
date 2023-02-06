@@ -151,6 +151,7 @@ def sagittal_angles(raw_dfs: object, state: bool):
         
         sgtl_result = pd.concat(angle_dfs, axis=1)
     side = "Left" if state else "Right"
+    sgtl_result = sgtl_result.add_prefix(side)
     column_header = pd.MultiIndex.from_product([[f'Sagittal Plane {side}'], sgtl_result.columns])
     sgtl_result.columns = column_header
 
@@ -194,7 +195,7 @@ def anterior_angles(raw_dfs: object):
             L_thigh_angle = L_thigh_angles['afLeftThigh']
             L_shin_angle = L_shin_angles['afLeftShin']
             l_knee_difference = abs(L_thigh_angle - L_shin_angle)
-            l_knee_difference = pd.DataFrame({'Left Knee': l_knee_difference})
+            l_knee_difference = pd.DataFrame({'afLeftKnee': l_knee_difference})
             angle_dfs.append(l_knee_difference)
         elif vertex == "afLeftAnkle":
             angle_dfs.append(calculate_angles_from_coordinates(df, vertex, orientation="hinge", dev_from_straight=True))
@@ -209,7 +210,7 @@ def anterior_angles(raw_dfs: object):
             R_thigh_angle = R_thigh_angles['afRightThigh']
             R_shin_angle = R_shin_angles['afRightShin']
             r_knee_difference = abs(R_thigh_angle - R_shin_angle)
-            r_knee_difference = pd.DataFrame({'Right Knee': r_knee_difference})
+            r_knee_difference = pd.DataFrame({'afRightKnee': r_knee_difference})
             angle_dfs.append(r_knee_difference)
         elif vertex == "afRightAnkle":
             angle_dfs.append(calculate_angles_from_coordinates(df, vertex, orientation="hinge", dev_from_straight=True))

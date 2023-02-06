@@ -87,8 +87,8 @@ batch_size: 8
     # Cropping Parameters (for analysis and outlier frame detection)
 cropping: true
     #if cropping is true for analysis, then set the values here:
-x1: 350
-x2: 730
+x1: 100
+x2: 1000
 y1: 500
 y2: 1370
 
