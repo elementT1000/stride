@@ -69,8 +69,8 @@ def write_labels(angle, name, fr, x, y):
     cv2.putText(fr, name + ": " + str(round(angle, 1)), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1.2, cyan, 3)
 
 if __name__ == "__main__":
-    video_path = r"C:\Users\14124\stride\root_dir\Subject_1\processed_files\tk_091322_sr_ns_analyzed_labeled.mp4"
-    csv_path = r"C:\Users\14124\stride\root_dir\Subject_1\processed_files\angles_tk_091322_sr_ns_analyzed.csv"
+    video_path = r"C:\Users\14124\stride\root_dir\Subject_7\dm_091322_sr_ns_analyzed_labeled.mp4"
+    csv_path = r"C:\Users\14124\stride\root_dir\Subject_7\angles_dm_091322_sr_ns_analyzed.csv"
     #Note: Origin is in the upper left hand corner
     csv_frame_to_video(video_path, csv_path, lt_x=75, rt_y=700)
 
