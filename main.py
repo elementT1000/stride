@@ -9,7 +9,7 @@ import pandas as pd
 import time
 
 
-script, root_dir = 'main.py', r'C:\Users\14124\stride\root_dir\Subject_7' # change to argv in order to accept command line arguments
+script, root_dir = argv  # change to argv in order to accept command line arguments. 'main.py', r'C:\Users\14124\stride\root_dir\Subject_7'
 file_ext = ".MP4"
 
 def get_full_path_list(root_dir, file_ext):
