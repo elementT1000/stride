@@ -4,7 +4,7 @@ from pathlib import Path
 import angle_finder
 from angle_finder import *
 from plnconstants import *
-import write_angles
+from write_angles import *
 import pandas as pd
 import time
 
@@ -78,15 +78,15 @@ def parse_angles_from_h5_files(h5_list):
 
     #TODO: Maybe here, I can add a title block indicating patient origin, and concatenate all of the angle_dfs.
     result = pd.concat(concat_list, axis=1).applymap(lambda x: round(x, 2))
-    print(result)
+    #print(result)
     csv_path.append(angle_finder.df_saver(dataframe=result, h5_path=cur_h5))
 
     return csv_path
 
 if __name__ == '__main__':
     fpl = get_full_path_list(root_dir, '.MP4')
-    print(fpl)
-
+    #print(fpl)
+    
     #Each inference is informed by a different config file, so we have to control the flow to those files
     for file in fpl:
         path = Path(file)
@@ -106,18 +106,32 @@ if __name__ == '__main__':
         
     #TODO: Bring over the deeplabcut files that I edited on Big Bertha. 
     #TODO: Potentially, load up a new t4-dlc library if it can be private.
+    
     h5_list = get_file_list(root_dir, fpl, "_filtered.h5", "_analyzed.h5")
-    print(h5_list)
+    #print(h5_list)
 
-    start = time.time()
-    csv_path = parse_angles_from_h5_files(h5_list)
-    end = time.time()
-    total = end - start
-    print("The time to complete parse function is: ", str(total))
+    #start = time.time()
+    csv_path = parse_angles_from_h5_files(h5_list) # Returns a list so take the first index in order to access later
+    csv_path = str(csv_path[0])
+    #end = time.time()
+    #total = end - start
+    #print("The time to complete parse function is: ", str(total))
+    
+    fin_vid_list = get_file_list(root_dir, fpl, "_analyzed_labeled.mp4", "_labeled.mp4")
+    for vid in fin_vid_list:
+        path = Path(vid)
+        file_name = path.name
+        name = file_name.split('_')
 
-    #fin_vid_list = get_file_list(root_dir, fpl, "_analyzed_labeled.mp4", "_labeled.mp4")
-    #TODO: I need to expand the write angles function to pull values straight from the .csv that 
-    #contains all angles. It needs to search for the first level.
-    # Write angles to each labeled video
-    '''for fin_vid, csv in zip(fin_vid_list, csv_path):
-        write_angles.csv_sagittal_angles_to_video(video=fin_vid, csv=csv)'''
+        if 'sl' in name:
+            csv_left_angles_to_video(vid, csv_path, lt_x=100, rt_y=500)
+
+        elif 'sr' in name:
+            csv_sagittal_angles_to_video(vid, csv_path, lt_x=600, rt_y=400)
+        
+        elif 'pf' in name:
+            csv_posterior_angles_to_video(vid, csv_path)
+
+        elif 'af' in name:
+            csv_anterior_angles_to_video(vid, csv_path)
+    
