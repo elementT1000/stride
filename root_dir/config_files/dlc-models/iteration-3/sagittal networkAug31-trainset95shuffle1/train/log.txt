@@ -1,0 +1,219 @@
+2023-02-01 11:16:23 Config:
+{'all_joints': [[0], [1], [2], [3], [4], [5], [6], [7]],
+ 'all_joints_names': ['Shoulder',
+                      'Elbow',
+                      'Hip',
+                      'Knee',
+                      'Ankle',
+                      'Heel',
+                      'Ball_of_Foot',
+                      'Big_Toe'],
+ 'alpha_r': 0.02,
+ 'apply_prob': 0.5,
+ 'batch_size': 1,
+ 'clahe': True,
+ 'claheratio': 0.1,
+ 'crop_pad': 0,
+ 'cropratio': 0.4,
+ 'dataset': 'training-datasets\\iteration-3\\UnaugmentedDataSet_sagittal '
+            'networkAug31\\sagittal network_Ethan95shuffle1.mat',
+ 'dataset_type': 'default',
+ 'decay_steps': 30000,
+ 'deterministic': False,
+ 'display_iters': 1000,
+ 'edge': False,
+ 'emboss': {'alpha': [0.0, 1.0], 'embossratio': 0.1, 'strength': [0.5, 1.5]},
+ 'fg_fraction': 0.25,
+ 'global_scale': 0.8,
+ 'histeq': True,
+ 'histeqratio': 0.1,
+ 'init_weights': 'C:\\Users\\14124\\anaconda3\\envs\\DEEPLABCUT\\lib\\site-packages\\deeplabcut\\pose_estimation_tensorflow\\models\\pretrained\\resnet_v1_50.ckpt',
+ 'intermediate_supervision': False,
+ 'intermediate_supervision_layer': 12,
+ 'location_refinement': True,
+ 'locref_huber_loss': True,
+ 'locref_loss_weight': 0.05,
+ 'locref_stdev': 7.2801,
+ 'log_dir': 'log',
+ 'lr_init': 0.0005,
+ 'max_input_size': 1500,
+ 'mean_pixel': [123.68, 116.779, 103.939],
+ 'metadataset': 'training-datasets\\iteration-3\\UnaugmentedDataSet_sagittal '
+                'networkAug31\\Documentation_data-sagittal '
+                'network_95shuffle1.pickle',
+ 'min_input_size': 64,
+ 'mirror': False,
+ 'multi_stage': False,
+ 'multi_step': [[0.005, 10000],
+                [0.02, 430000],
+                [0.002, 730000],
+                [0.001, 1030000]],
+ 'net_type': 'resnet_50',
+ 'num_joints': 8,
+ 'optimizer': 'sgd',
+ 'pairwise_huber_loss': False,
+ 'pairwise_predict': False,
+ 'partaffinityfield_predict': False,
+ 'pos_dist_thresh': 17,
+ 'project_path': 'C:\\Users\\14124\\Running_Analysis\\Sagittal',
+ 'regularize': False,
+ 'rotation': 25,
+ 'rotratio': 0.4,
+ 'save_iters': 50000,
+ 'scale_jitter_lo': 0.5,
+ 'scale_jitter_up': 1.25,
+ 'scoremap_dir': 'test',
+ 'sharpen': False,
+ 'sharpenratio': 0.3,
+ 'shuffle': True,
+ 'snapshot_prefix': 'C:\\Users\\14124\\Running_Analysis\\Sagittal\\dlc-models\\iteration-3\\sagittal '
+                    'networkAug31-trainset95shuffle1\\train\\snapshot',
+ 'stride': 8.0,
+ 'weigh_negatives': False,
+ 'weigh_only_present_joints': False,
+ 'weigh_part_predictions': False,
+ 'weight_decay': 0.0001}
+2023-02-01 11:37:56 iteration: 10000 loss: 0.0151 lr: 0.005
+2023-02-01 11:51:34 iteration: 20000 loss: 0.0092 lr: 0.02
+2023-02-01 12:04:49 iteration: 30000 loss: 0.0067 lr: 0.02
+2023-02-01 12:18:03 iteration: 40000 loss: 0.0059 lr: 0.02
+2023-02-01 12:31:17 iteration: 50000 loss: 0.0053 lr: 0.02
+2023-02-01 12:44:27 iteration: 60000 loss: 0.0049 lr: 0.02
+2023-02-01 12:57:36 iteration: 70000 loss: 0.0047 lr: 0.02
+2023-02-01 13:10:43 iteration: 80000 loss: 0.0044 lr: 0.02
+2023-02-01 13:23:49 iteration: 90000 loss: 0.0042 lr: 0.02
+2023-02-01 13:36:57 iteration: 100000 loss: 0.0041 lr: 0.02
+2023-02-01 13:50:03 iteration: 110000 loss: 0.0039 lr: 0.02
+2023-02-01 14:03:05 iteration: 120000 loss: 0.0038 lr: 0.02
+2023-02-01 14:16:09 iteration: 130000 loss: 0.0037 lr: 0.02
+2023-02-01 14:29:21 iteration: 140000 loss: 0.0037 lr: 0.02
+2023-02-01 14:42:25 iteration: 150000 loss: 0.0035 lr: 0.02
+2023-02-01 14:55:39 iteration: 160000 loss: 0.0035 lr: 0.02
+2023-02-01 15:08:45 iteration: 170000 loss: 0.0034 lr: 0.02
+2023-02-01 15:21:50 iteration: 180000 loss: 0.0033 lr: 0.02
+2023-02-01 15:34:57 iteration: 190000 loss: 0.0033 lr: 0.02
+2023-02-01 15:48:09 iteration: 200000 loss: 0.0033 lr: 0.02
+2023-02-01 16:01:15 iteration: 210000 loss: 0.0032 lr: 0.02
+2023-02-01 16:14:23 iteration: 220000 loss: 0.0031 lr: 0.02
+2023-02-01 16:27:29 iteration: 230000 loss: 0.0031 lr: 0.02
+2023-02-01 16:40:35 iteration: 240000 loss: 0.0031 lr: 0.02
+2023-02-01 16:53:40 iteration: 250000 loss: 0.0030 lr: 0.02
+2023-02-01 17:06:48 iteration: 260000 loss: 0.0030 lr: 0.02
+2023-02-01 17:19:57 iteration: 270000 loss: 0.0029 lr: 0.02
+2023-02-01 17:33:05 iteration: 280000 loss: 0.0029 lr: 0.02
+2023-02-01 17:46:18 iteration: 290000 loss: 0.0029 lr: 0.02
+2023-02-01 17:59:27 iteration: 300000 loss: 0.0028 lr: 0.02
+2023-02-01 18:12:41 iteration: 310000 loss: 0.0028 lr: 0.02
+2023-02-01 18:25:49 iteration: 320000 loss: 0.0028 lr: 0.02
+2023-02-01 18:38:55 iteration: 330000 loss: 0.0028 lr: 0.02
+2023-02-01 18:52:04 iteration: 340000 loss: 0.0027 lr: 0.02
+2023-02-01 19:05:09 iteration: 350000 loss: 0.0027 lr: 0.02
+2023-02-01 19:18:17 iteration: 360000 loss: 0.0027 lr: 0.02
+2023-02-01 19:31:21 iteration: 370000 loss: 0.0026 lr: 0.02
+2023-02-01 19:44:30 iteration: 380000 loss: 0.0026 lr: 0.02
+2023-02-01 19:57:39 iteration: 390000 loss: 0.0026 lr: 0.02
+2023-02-01 20:10:48 iteration: 400000 loss: 0.0026 lr: 0.02
+2023-02-01 20:23:56 iteration: 410000 loss: 0.0025 lr: 0.02
+2023-02-01 20:37:00 iteration: 420000 loss: 0.0025 lr: 0.02
+2023-02-01 20:50:06 iteration: 430000 loss: 0.0025 lr: 0.02
+2023-02-01 21:03:19 iteration: 440000 loss: 0.0022 lr: 0.002
+2023-02-01 21:16:30 iteration: 450000 loss: 0.0022 lr: 0.002
+2023-02-01 21:29:38 iteration: 460000 loss: 0.0021 lr: 0.002
+2023-02-01 21:42:45 iteration: 470000 loss: 0.0021 lr: 0.002
+2023-02-01 21:55:54 iteration: 480000 loss: 0.0021 lr: 0.002
+2023-02-01 22:09:04 iteration: 490000 loss: 0.0021 lr: 0.002
+2023-02-01 22:22:08 iteration: 500000 loss: 0.0021 lr: 0.002
+2023-02-01 22:35:11 iteration: 510000 loss: 0.0021 lr: 0.002
+2023-02-01 22:48:18 iteration: 520000 loss: 0.0021 lr: 0.002
+2023-02-01 23:01:26 iteration: 530000 loss: 0.0021 lr: 0.002
+2023-02-01 23:14:32 iteration: 540000 loss: 0.0020 lr: 0.002
+2023-02-01 23:27:35 iteration: 550000 loss: 0.0020 lr: 0.002
+2023-02-01 23:40:43 iteration: 560000 loss: 0.0020 lr: 0.002
+2023-02-01 23:53:50 iteration: 570000 loss: 0.0020 lr: 0.002
+2023-02-02 00:06:56 iteration: 580000 loss: 0.0020 lr: 0.002
+2023-02-02 00:19:59 iteration: 590000 loss: 0.0020 lr: 0.002
+2023-02-02 00:33:06 iteration: 600000 loss: 0.0020 lr: 0.002
+2023-02-02 00:46:12 iteration: 610000 loss: 0.0020 lr: 0.002
+2023-02-02 00:59:20 iteration: 620000 loss: 0.0020 lr: 0.002
+2023-02-02 01:12:31 iteration: 630000 loss: 0.0020 lr: 0.002
+2023-02-02 01:25:31 iteration: 640000 loss: 0.0020 lr: 0.002
+2023-02-02 01:38:36 iteration: 650000 loss: 0.0020 lr: 0.002
+2023-02-02 01:51:43 iteration: 660000 loss: 0.0020 lr: 0.002
+2023-02-02 02:04:49 iteration: 670000 loss: 0.0020 lr: 0.002
+2023-02-02 02:17:54 iteration: 680000 loss: 0.0020 lr: 0.002
+2023-02-02 02:30:59 iteration: 690000 loss: 0.0020 lr: 0.002
+2023-02-02 02:44:03 iteration: 700000 loss: 0.0020 lr: 0.002
+2023-02-02 02:57:08 iteration: 710000 loss: 0.0020 lr: 0.002
+2023-02-02 03:10:14 iteration: 720000 loss: 0.0020 lr: 0.002
+2023-02-02 03:23:23 iteration: 730000 loss: 0.0020 lr: 0.002
+2023-02-02 03:36:28 iteration: 740000 loss: 0.0020 lr: 0.001
+2023-02-02 03:49:30 iteration: 750000 loss: 0.0019 lr: 0.001
+2023-02-02 04:02:37 iteration: 760000 loss: 0.0020 lr: 0.001
+2023-02-02 04:15:43 iteration: 770000 loss: 0.0020 lr: 0.001
+2023-02-02 04:28:47 iteration: 780000 loss: 0.0019 lr: 0.001
+2023-02-02 04:41:56 iteration: 790000 loss: 0.0019 lr: 0.001
+2023-02-02 04:55:00 iteration: 800000 loss: 0.0019 lr: 0.001
+2023-02-02 05:08:05 iteration: 810000 loss: 0.0019 lr: 0.001
+2023-02-02 05:21:11 iteration: 820000 loss: 0.0019 lr: 0.001
+2023-02-02 05:34:17 iteration: 830000 loss: 0.0019 lr: 0.001
+2023-02-02 05:47:23 iteration: 840000 loss: 0.0019 lr: 0.001
+2023-02-02 06:00:28 iteration: 850000 loss: 0.0019 lr: 0.001
+2023-02-02 06:13:35 iteration: 860000 loss: 0.0019 lr: 0.001
+2023-02-02 06:26:43 iteration: 870000 loss: 0.0020 lr: 0.001
+2023-02-02 06:39:49 iteration: 880000 loss: 0.0019 lr: 0.001
+2023-02-02 06:52:55 iteration: 890000 loss: 0.0019 lr: 0.001
+2023-02-02 07:06:02 iteration: 900000 loss: 0.0019 lr: 0.001
+2023-02-02 07:19:09 iteration: 910000 loss: 0.0019 lr: 0.001
+2023-02-02 07:32:18 iteration: 920000 loss: 0.0019 lr: 0.001
+2023-02-02 07:45:22 iteration: 930000 loss: 0.0019 lr: 0.001
+2023-02-02 07:58:24 iteration: 940000 loss: 0.0019 lr: 0.001
+2023-02-02 08:11:33 iteration: 950000 loss: 0.0019 lr: 0.001
+2023-02-02 08:24:38 iteration: 960000 loss: 0.0019 lr: 0.001
+2023-02-02 08:37:47 iteration: 970000 loss: 0.0019 lr: 0.001
+2023-02-02 08:50:54 iteration: 980000 loss: 0.0019 lr: 0.001
+2023-02-02 09:04:02 iteration: 990000 loss: 0.0019 lr: 0.001
+2023-02-02 09:17:08 iteration: 1000000 loss: 0.0019 lr: 0.001
+2023-02-02 09:22:39 Config:
+{'all_joints': [[0], [1], [2], [3], [4], [5], [6], [7]],
+ 'all_joints_names': ['Shoulder',
+                      'Elbow',
+                      'Hip',
+                      'Knee',
+                      'Ankle',
+                      'Heel',
+                      'Ball_of_Foot',
+                      'Big_Toe'],
+ 'batch_size': 1,
+ 'crop_pad': 0,
+ 'dataset': 'training-datasets\\iteration-3\\UnaugmentedDataSet_sagittal '
+            'networkAug31\\sagittal network_Ethan95shuffle1.mat',
+ 'dataset_type': 'imgaug',
+ 'deterministic': False,
+ 'fg_fraction': 0.25,
+ 'global_scale': 0.8,
+ 'init_weights': 'C:\\Users\\14124\\anaconda3\\envs\\DEEPLABCUT\\lib\\site-packages\\deeplabcut\\pose_estimation_tensorflow\\models\\pretrained\\resnet_v1_50.ckpt',
+ 'intermediate_supervision': False,
+ 'intermediate_supervision_layer': 12,
+ 'location_refinement': True,
+ 'locref_huber_loss': True,
+ 'locref_loss_weight': 1.0,
+ 'locref_stdev': 7.2801,
+ 'log_dir': 'log',
+ 'mean_pixel': [123.68, 116.779, 103.939],
+ 'mirror': False,
+ 'net_type': 'resnet_50',
+ 'num_joints': 8,
+ 'optimizer': 'sgd',
+ 'pairwise_huber_loss': True,
+ 'pairwise_predict': False,
+ 'partaffinityfield_predict': False,
+ 'regularize': False,
+ 'scoremap_dir': 'test',
+ 'shuffle': True,
+ 'snapshot_prefix': 'C:\\Users\\14124\\Running_Analysis\\Sagittal\\dlc-models\\iteration-3\\sagittal '
+                    'networkAug31-trainset95shuffle1\\test\\snapshot',
+ 'stride': 8.0,
+ 'weigh_negatives': False,
+ 'weigh_only_present_joints': False,
+ 'weigh_part_predictions': False,
+ 'weight_decay': 0.0001}
