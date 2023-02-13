@@ -6,14 +6,14 @@ from tqdm import tqdm
 import numpy as np
 
 
-def write_labels(angle, name, fr, x, y):
+def write_labels(angle, name, fr, x, y, size, boldness):
     black = (0, 0, 0)
     #opencv uses BGR
     green = (17, 233, 135)
     daffodil = (49, 255, 255)
     cyan = (255, 255, 49)
-    size = 1.2
-    boldness = 3
+    #size = 1.2
+    #boldness = 3
     if angle == 0:
         cv2.putText(fr, name + ": null", (x, y), cv2.FONT_HERSHEY_SIMPLEX, size, green, boldness)
     else:
@@ -71,25 +71,25 @@ def csv_posterior_angles_to_video(video: str, csv: str, videotype='MP4'):
         y_level = 1000
 
         hip_drop = angles_df.loc[f]['pfWaist']
-        write_labels(angle=hip_drop, name="Hip Drop", fr=frame, x=400, y=900)
+        write_labels(angle=hip_drop, name="Hip Drop", fr=frame, x=400, y=900, size=0.8, boldness=2)
 
         right_hip_angle = angles_df.loc[f]['pfRightFemurHead']
-        write_labels(angle=right_hip_angle, name="Right Hip Angle", fr=frame, x=lt_x, y=y_level)
+        write_labels(angle=right_hip_angle, name="Right Hip Angle", fr=frame, x=lt_x, y=y_level, size=0.8, boldness=2)
 
         right_knee_angle = angles_df.loc[f]['pfRightKnee']
-        write_labels(angle=right_knee_angle, name="Right Knee Angle", fr=frame, x=lt_x, y=y_level+200)
+        write_labels(angle=right_knee_angle, name="Right Knee Angle", fr=frame, x=lt_x, y=y_level+200, size=0.8, boldness=2)
 
         right_ankle_angle = angles_df.loc[f]['pfRightAnkle']
-        write_labels(angle=right_ankle_angle, name="Right Ankle Angle", fr=frame, x=lt_x, y=y_level+400)
+        write_labels(angle=right_ankle_angle, name="Right Ankle Angle", fr=frame, x=lt_x, y=y_level+400, size=0.8, boldness=2)
 
         left_hip_angle = angles_df.loc[f]['pfLeftFemurHead']
-        write_labels(angle=left_hip_angle, name="Left Hip Angle", fr=frame, x=rt_x, y=y_level)
+        write_labels(angle=left_hip_angle, name="Left Hip Angle", fr=frame, x=rt_x, y=y_level, size=0.8, boldness=2)
 
         left_knee_angle = angles_df.loc[f]['pfLeftKnee']
-        write_labels(angle=left_knee_angle, name="Left Knee Angle", fr=frame, x=rt_x, y=y_level+200)
+        write_labels(angle=left_knee_angle, name="Left Knee Angle", fr=frame, x=rt_x, y=y_level+200, size=0.8, boldness=2)
 
         left_ankle_angle = angles_df.loc[f]['pfLeftAnkle']
-        write_labels(angle=left_ankle_angle, name="Left Ankle Angle", fr=frame, x=rt_x, y=y_level+400)
+        write_labels(angle=left_ankle_angle, name="Left Ankle Angle", fr=frame, x=rt_x, y=y_level+400, size=0.8, boldness=2)
                 
         vid_writer.write(frame)
 
@@ -145,19 +145,19 @@ def csv_sagittal_angles_to_video(video: str, csv: str, rt_y=150, lt_x=75, videot
             break
         #The dataframe rows are set down by an extra level because of the headers, so add one
         arm_angle = angles_df.loc[f]['RightArm']
-        write_labels(angle=arm_angle, name="Arm Angle", fr=frame, x=lt_x, y=rt_y-200)
+        write_labels(angle=arm_angle, name="Arm Angle", fr=frame, x=lt_x, y=rt_y-200, size=1.2, boldness=3)
 
         hip_angle = angles_df.loc[f]['RightHip']
-        write_labels(angle=hip_angle, name="Hip Angle", fr=frame, x=lt_x, y=rt_y)
+        write_labels(angle=hip_angle, name="Hip Angle", fr=frame, x=lt_x, y=rt_y, size=1.2, boldness=3)
 
         knee_angle = angles_df.loc[f]['RightKnee']
-        write_labels(angle=knee_angle, name="Knee Angle", fr=frame, x=lt_x, y=rt_y+200)
+        write_labels(angle=knee_angle, name="Knee Angle", fr=frame, x=lt_x, y=rt_y+200, size=1.2, boldness=3)
 
         toe_angle = angles_df.loc[f]['RightAnkle']
-        write_labels(angle=toe_angle, name="Ankle Angle", fr=frame, x=lt_x, y=rt_y+400)
+        write_labels(angle=toe_angle, name="Ankle Angle", fr=frame, x=lt_x, y=rt_y+400, size=1.2, boldness=3)
 
         toe_angle = angles_df.loc[f]['RightToe']
-        write_labels(angle=toe_angle, name="Toe Angle", fr=frame, x=lt_x, y=rt_y+600)
+        write_labels(angle=toe_angle, name="Toe Angle", fr=frame, x=lt_x, y=rt_y+600, size=1.2, boldness=3)
 
         vid_writer.write(frame)
 
@@ -213,19 +213,19 @@ def csv_left_angles_to_video(video: str, csv: str, rt_y=150, lt_x=75, videotype=
             break
         #The dataframe rows are set down by an extra level because of the headers, so add one
         arm_angle = angles_df.loc[f]['RightArm']
-        write_labels(angle=arm_angle, name="Arm Angle", fr=frame, x=lt_x, y=rt_y-200)
+        write_labels(angle=arm_angle, name="Arm Angle", fr=frame, x=lt_x, y=rt_y-200, size=1.2, boldness=3)
 
         hip_angle = angles_df.loc[f]['RightHip']
-        write_labels(angle=hip_angle, name="Hip Angle", fr=frame, x=lt_x, y=rt_y)
+        write_labels(angle=hip_angle, name="Hip Angle", fr=frame, x=lt_x, y=rt_y, size=1.2, boldness=3)
 
         knee_angle = angles_df.loc[f]['RightKnee']
-        write_labels(angle=knee_angle, name="Knee Angle", fr=frame, x=lt_x, y=rt_y+200)
+        write_labels(angle=knee_angle, name="Knee Angle", fr=frame, x=lt_x, y=rt_y+200, size=1.2, boldness=3)
 
         toe_angle = angles_df.loc[f]['RightAnkle']
-        write_labels(angle=toe_angle, name="Ankle Angle", fr=frame, x=lt_x, y=rt_y+400)
+        write_labels(angle=toe_angle, name="Ankle Angle", fr=frame, x=lt_x, y=rt_y+400, size=1.2, boldness=3)
 
         toe_angle = angles_df.loc[f]['RightToe']
-        write_labels(angle=toe_angle, name="Toe Angle", fr=frame, x=lt_x, y=rt_y+600)
+        write_labels(angle=toe_angle, name="Toe Angle", fr=frame, x=lt_x, y=rt_y+600, size=1.2, boldness=3)
 
         vid_writer.write(frame)
 
@@ -285,28 +285,28 @@ def csv_anterior_angles_to_video(video: str, csv: str, videotype='MP4'):
         y_level = 400
 
         right_hip_angle = angles_df.loc[f]['afRightThigh']
-        write_labels(angle=right_hip_angle, name="Right Hip Angle", fr=frame, x=lt_x, y=y_level)
+        write_labels(angle=right_hip_angle, name="Right Hip Angle", fr=frame, x=lt_x, y=y_level, size=0.8, boldness=2)
 
         right_knee_angle = angles_df.loc[f]['afRightKnee']
-        write_labels(angle=right_knee_angle, name="Right Knee Angle", fr=frame, x=lt_x, y=y_level+100)
+        write_labels(angle=right_knee_angle, name="Right Knee Angle", fr=frame, x=lt_x, y=y_level+100, size=0.8, boldness=2)
 
         right_ankle_angle = angles_df.loc[f]['afRightAnkle']
-        write_labels(angle=right_ankle_angle, name="Right Ankle Angle", fr=frame, x=lt_x, y=y_level+200)
+        write_labels(angle=right_ankle_angle, name="Right Ankle Angle", fr=frame, x=lt_x, y=y_level+200, size=0.8, boldness=2)
 
         foot_angle = angles_df.loc[f]['afRightFoot']
-        write_labels(angle=foot_angle, name="Right Foot", fr=frame, x=lt_x, y=y_level+300)
+        write_labels(angle=foot_angle, name="Right Foot", fr=frame, x=lt_x, y=y_level+300, size=0.8, boldness=2)
 
         left_hip_angle = angles_df.loc[f]['afLeftThigh']
-        write_labels(angle=left_hip_angle, name="Left Hip", fr=frame, x=rt_x, y=y_level)
+        write_labels(angle=left_hip_angle, name="Left Hip", fr=frame, x=rt_x, y=y_level, size=0.8, boldness=2)
 
         left_knee_angle = angles_df.loc[f]['afLeftKnee']
-        write_labels(angle=left_knee_angle, name="Left Knee", fr=frame, x=rt_x, y=y_level+100)
+        write_labels(angle=left_knee_angle, name="Left Knee", fr=frame, x=rt_x, y=y_level+100, size=0.8, boldness=2)
 
         left_ankle_angle = angles_df.loc[f]['afLeftAnkle']
-        write_labels(angle=left_ankle_angle, name="Left Ankle", fr=frame, x=rt_x, y=y_level+200)
+        write_labels(angle=left_ankle_angle, name="Left Ankle", fr=frame, x=rt_x, y=y_level+200, size=0.8, boldness=2)
 
         foot_angle = angles_df.loc[f]['afLeftFoot']
-        write_labels(angle=foot_angle, name="Left Foot", fr=frame, x=rt_x, y=y_level+300)
+        write_labels(angle=foot_angle, name="Left Foot", fr=frame, x=rt_x, y=y_level+300, size=0.8, boldness=2)
 
         vid_writer.write(frame)
 
