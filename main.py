@@ -75,7 +75,6 @@ def parse_angles_from_h5_files(h5_list):
         
         else:
             print("There doesn't seem to be an indication of what plane of view this is. CHeck the file names.")
-            return
 
     #TODO: Maybe here, I can add a title block indicating patient origin, and concatenate all of the angle_dfs.
     result = pd.concat(concat_list, axis=1).applymap(lambda x: round(x, 2))
