@@ -11,6 +11,7 @@ import time
 
 
 script, root_dir = argv  # change to argv in order to accept command line arguments. 'main.py', r'C:\Users\14124\stride\root_dir\Subject_7'
+script, root_dir = argv  # change to argv in order to accept command line arguments. 'main.py', r'C:\Users\14124\stride\root_dir\Subject_7'
 file_ext = ".MP4"
 
 def get_full_path_list(root_dir, file_ext):
@@ -80,12 +81,15 @@ def parse_angles_from_h5_files(h5_list):
     #TODO: Maybe here, I can add a title block indicating patient origin, and concatenate all of the angle_dfs.
     result = pd.concat(concat_list, axis=1).applymap(lambda x: round(x, 2))
     #print(result)
+    #print(result)
     csv_path.append(angle_finder.df_saver(dataframe=result, h5_path=cur_h5))
 
     return csv_path
 
 if __name__ == '__main__':
     fpl = get_full_path_list(root_dir, '.MP4')
+    #print(fpl)
+    
     #print(fpl)
     
     #Each inference is informed by a different config file, so we have to control the flow to those files
@@ -107,6 +111,7 @@ if __name__ == '__main__':
         
     #TODO: Bring over the deeplabcut files that I edited on Big Bertha. 
     #TODO: Potentially, load up a new t4-dlc library if it can be private.
+    
     
     h5_list = get_file_list(root_dir, fpl, "_filtered.h5", "_analyzed.h5")
     #print(h5_list)
