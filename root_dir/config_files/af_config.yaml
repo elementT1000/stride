@@ -78,7 +78,7 @@ colormap: autumn
     # Training,Evaluation and Analysis configuration
 TrainingFraction:
 - 0.95
-iteration: 1
+iteration: 2
 default_net_type: resnet_50
 default_augmenter: default
 snapshotindex: -1

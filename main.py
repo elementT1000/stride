@@ -135,4 +135,6 @@ if __name__ == '__main__':
 
         elif 'af' in name:
             csv_anterior_angles_to_video(vid, csv_path)
+
+    ml_runner(csv_path)
     
