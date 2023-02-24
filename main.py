@@ -1,5 +1,6 @@
 import deeplabcut
 from sys import argv
+import subprocess
 from pathlib import Path
 import angle_finder
 from angle_finder import *
@@ -82,10 +83,7 @@ def parse_angles_from_h5_files(h5_list):
 
     return csv_path
 
-if __name__ == '__main__':
-    fpl = get_full_path_list(root_dir, '.MP4')
-    #print(fpl)
-    
+def run_stride(fpl: list):
     #Each inference is informed by a different config file, so we have to control the flow to those files
     for file in fpl:
         path = Path(file)
@@ -134,4 +132,28 @@ if __name__ == '__main__':
             csv_anterior_angles_to_video(vid, csv_path)
 
     ml_runner(csv_path)
+
+if __name__ == '__main__':
+    video_list = get_full_path_list(root_dir, '.MP4')
+    
+    run_stride(video_list)
+
+    #Create a list of all files
+    root_dir = Path(root_dir)
+    # Convert both lists to sets of strings representing the file paths
+    video_set = {str(p) for p in video_list}
+    all_files = {str(p) for p in root_dir.glob('*')}    
+
+    #Create a folder to store processed files
+    path_0 = Path(video_list[0])
+    processed_dir_path = path_0.parent / 'Processed_Files'
+    if not processed_dir_path.exists():
+        processed_dir_path.mkdir()
+
+    for file in all_files:
+        if file not in video_set:
+            path_obj = Path(file)
+            f = path_obj.name
+            new_path = processed_dir_path / f
+            path_obj.rename(new_path)
     
