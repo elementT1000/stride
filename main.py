@@ -79,6 +79,10 @@ def parse_angles_from_h5_files(h5_list):
 
     #TODO: Maybe here, I can add a title block indicating patient origin, and concatenate all of the angle_dfs.
     result = pd.concat(concat_list, axis=1).applymap(lambda x: round(x, 2))
+<<<<<<< HEAD
+=======
+    #print(result)
+>>>>>>> 5f3c2e719e5263c8b243d826c70d89e1398ccb23
     csv_path.append(angle_finder.df_saver(dataframe=result, h5_path=cur_h5))
 
     return csv_path
@@ -103,6 +107,7 @@ def run_stride(fpl: list):
         
     #TODO: Bring over the deeplabcut files that I edited on Big Bertha. 
     #TODO: Potentially, load up a new t4-dlc library if it can be private.
+    
     h5_list = get_file_list(root_dir, fpl, "_filtered.h5", "_analyzed.h5")
     #print(h5_list)
 
