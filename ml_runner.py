@@ -1,7 +1,9 @@
 import numpy as np
+from sys import argv
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 import joblib
+from plnconstants import home
 
 
 def ml_runner(csv_path):
@@ -14,11 +16,11 @@ def ml_runner(csv_path):
     df_array = np.nan_to_num(df_scaled, 0)
 
     #load the model and predict
-    rightleg_model = joblib.load(r'C:\Users\14124\stride\root_dir\config_files\ml-models\rightleg_runlab_model_021323.sav')
+    rightleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\rightleg_runlab_model_021323.sav')
     rl_predict = rightleg_model.predict(df_array)
     df_rl = pd.DataFrame(rl_predict, columns=['RL - RunLab'])
 
-    leftleg_model = joblib.load(r'C:\Users\14124\stride\root_dir\config_files\ml-models\leftleg_runlab_model_021323.sav')
+    leftleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\leftleg_runlab_model_021323.sav')
     ll_predict = leftleg_model.predict(df_array)
     df_ll = pd.DataFrame(ll_predict, columns=['LL - RunLab'])
     
@@ -52,6 +54,7 @@ def ml_runner(csv_path):
     return print(csv_path + " has been used to generate prediction.")
 
 if __name__ == "__main__":
-    csv_path = r"root_dir\Subject_1\original_files\angles_tk_091322_sr_ns_analyzed - Copy.csv"
+    script, csv_path = argv
+    #csv_path = r"root_dir\Subject_1\original_files\angles_tk_091322_sr_ns_analyzed - Copy.csv"
     ml_runner(csv_path=csv_path)
 

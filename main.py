@@ -79,10 +79,7 @@ def parse_angles_from_h5_files(h5_list):
 
     #TODO: Maybe here, I can add a title block indicating patient origin, and concatenate all of the angle_dfs.
     result = pd.concat(concat_list, axis=1).applymap(lambda x: round(x, 2))
-<<<<<<< HEAD
-=======
     #print(result)
->>>>>>> 5f3c2e719e5263c8b243d826c70d89e1398ccb23
     csv_path.append(angle_finder.df_saver(dataframe=result, h5_path=cur_h5))
 
     return csv_path

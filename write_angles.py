@@ -1,4 +1,5 @@
 from pathlib import Path
+from sys import argv
 import typing
 import cv2
 import pandas as pd
@@ -6,6 +7,7 @@ from tqdm import tqdm
 import numpy as np
 
 
+#TODO: Increase abstraction to reduce duplication of code through each of these functions
 def write_labels(angle, name, fr, x, y, size, boldness):
     black = (0, 0, 0)
     #opencv uses BGR
@@ -315,12 +317,6 @@ def csv_anterior_angles_to_video(video: str, csv: str, videotype='MP4'):
     cv_video.release()
 
 if __name__ == "__main__":
-    video_path = r"C:\Users\14124\stride\root_dir\Subject_7\dm_091322_sl_ns_analyzed_labeled.mp4"
-    frontal_video_path = r"C:\Users\14124\stride\root_dir\Subject_7\dm_091322_pf_ns_analyzed_labeled.mp4"
-    anterior_video_path = r"C:\Users\14124\stride\root_dir\Subject_7\dm_091322_af_ns_analyzed_labeled.mp4"
-    csv_path = r"C:\Users\14124\stride\root_dir\Subject_7\angles_dm_091322_sr_ns_analyzed.csv"
-    #Note: Origin is in the upper left hand corner
-    #csv_sagittal_angles_to_video(video_path, csv_path, lt_x=600, rt_y=400)
-    #csv_posterior_angles_to_video(frontal_video_path, csv_path)
-    #csv_anterior_angles_to_video(anterior_video_path, csv_path)
+    script, video_path, csv_path = argv
+    
     csv_left_angles_to_video(video_path, csv_path, lt_x=100, rt_y=500)
