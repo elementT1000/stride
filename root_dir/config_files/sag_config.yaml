@@ -6,7 +6,7 @@ multianimalproject: false
 identity:
 
     # Project path (change when moving around)
-project_path: C:\Users\14124\stride\root_dir\config_files
+project_path: C:\Users\14124\t4_dir\product\stride\root_dir\config_files
 
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
@@ -180,6 +180,8 @@ bodyparts:
     # Fraction of video to start/stop when extracting frames for labeling/refinement
 
     # Fraction of video to start/stop when extracting frames for labeling/refinement
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
 start: 0
 stop: 1
 numframes2pick: 20
@@ -210,7 +212,7 @@ colormap: autumn
     # Training,Evaluation and Analysis configuration
 TrainingFraction:
 - 0.95
-iteration: 4
+iteration: 5
 default_net_type: resnet_50
 default_augmenter: default
 snapshotindex: -1
@@ -219,11 +221,10 @@ batch_size: 8
     # Cropping Parameters (for analysis and outlier frame detection)
 cropping: true
     #if cropping is true for analysis, then set the values here:
-    #TODO: The framing for the sagittal plane is assymetrical, can their be different cropping values for different sides?
 x1: 0
 x2: 1080
 y1: 300
-y2: 1600 #Increase this number to see the feet
+y2: 1600
 
     # Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
 corner2move2:

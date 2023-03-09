@@ -6,7 +6,7 @@ multianimalproject: false
 identity:
 
     # Project path (change when moving around)
-project_path: C:\Users\14124\stride\root_dir\config_files
+project_path: C:\Users\14124\t4_dir\product\stride\root_dir\config_files
 
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
@@ -27,10 +27,6 @@ bodyparts:
 - LeftHeel
 - LeftFirstMetatarsal
 - Left5thMetatarsal
-
-    # Fraction of video to start/stop when extracting frames for labeling/refinement
-
-    # Fraction of video to start/stop when extracting frames for labeling/refinement
 
     # Fraction of video to start/stop when extracting frames for labeling/refinement
 start: 0
@@ -75,7 +71,7 @@ colormap: autumn
     # Training,Evaluation and Analysis configuration
 TrainingFraction:
 - 0.95
-iteration: 3
+iteration: 4
 default_net_type: resnet_50
 default_augmenter: default
 snapshotindex: -1
@@ -84,10 +80,10 @@ batch_size: 8
     # Cropping Parameters (for analysis and outlier frame detection)
 cropping: false
     #if cropping is true for analysis, then set the values here:
-x1: 325
-x2: 900
+x1: 360
+x2: 700
 y1: 500
-y2: 1400
+y2: 1450
 
     # Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
 corner2move2:

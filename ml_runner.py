@@ -16,11 +16,11 @@ def ml_runner(csv_path):
     df_array = np.nan_to_num(df_scaled, 0)
 
     #load the model and predict
-    rightleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\rightleg_runlab_model_021323.sav')
+    rightleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\leftleg_runlab_model_030823.sav')
     rl_predict = rightleg_model.predict(df_array)
     df_rl = pd.DataFrame(rl_predict, columns=['RL - RunLab'])
 
-    leftleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\leftleg_runlab_model_021323.sav')
+    leftleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\rightleg_runlab_model_030823.sav')
     ll_predict = leftleg_model.predict(df_array)
     df_ll = pd.DataFrame(ll_predict, columns=['LL - RunLab'])
     

@@ -6,7 +6,7 @@ multianimalproject: false
 identity:
 
     # Project path (change when moving around)
-project_path: C:\Users\14124\stride\root_dir\config_files
+project_path: C:\Users\14124\t4_dir\product\stride\root_dir\config_files
 
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
@@ -47,6 +47,8 @@ bodyparts:
     # Fraction of video to start/stop when extracting frames for labeling/refinement
 
     # Fraction of video to start/stop when extracting frames for labeling/refinement
+
+    # Fraction of video to start/stop when extracting frames for labeling/refinement
 start: 0
 stop: 1
 numframes2pick: 30
@@ -78,7 +80,7 @@ colormap: autumn
     # Training,Evaluation and Analysis configuration
 TrainingFraction:
 - 0.95
-iteration: 2
+iteration: 3
 default_net_type: resnet_50
 default_augmenter: default
 snapshotindex: -1
