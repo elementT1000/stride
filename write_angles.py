@@ -41,14 +41,16 @@ def csv_posterior_angles_to_video(video: str, csv: str, videotype='MP4'):
     nframes = int(cv_video.get(cv2.CAP_PROP_FRAME_COUNT))
 
     #collect video info for subsequent writing
-    x = int(cv_video.get(3))
-    y_level = int(cv_video.get(4))
+    frame_x = int(cv_video.get(3))
+    frame_y = int(cv_video.get(4))
     fps = cv_video.get(5)
 
     new_fname = str(path_vid).replace("_labeled.mp4", "_angles.mp4")
     print(new_fname)
 
-    vid_writer = cv2.VideoWriter(str(new_fname), cv2.VideoWriter_fourcc(*'mp4v'), fps, (x, y_level))
+    #We add a border, so it is necessary to adjust the video writer to handle this
+    wider = 380
+    vid_writer = cv2.VideoWriter(str(new_fname), cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_x + wider, frame_y))
 
     path_csv = Path(csv)
     if path_csv.is_file() == False:
@@ -68,31 +70,121 @@ def csv_posterior_angles_to_video(video: str, csv: str, videotype='MP4'):
         if not ok:
             break
         
-        lt_x = 100
-        rt_x = 700
-        y_level = 1000
+        #cv2.imshow("just frame", frame)
+        frame = cv2.copyMakeBorder(frame, 0, 0, int(wider/2), int(wider/2), cv2.BORDER_CONSTANT, value=[0, 0, 0])
+        #cv2.imshow("bordered frame", frame)
+
+        lt_x = 0
+        rt_x = frame_x + int(wider/2)
+        y_level = 400
 
         hip_drop = angles_df.loc[f]['pfWaist']
-        write_labels(angle=hip_drop, name="Hip Drop", fr=frame, x=400, y=900, size=0.8, boldness=2)
+        write_labels(angle=hip_drop, name="Hip Drop", fr=frame, x=lt_x, y=y_level-100, size=0.6, boldness=2)
 
         right_hip_angle = angles_df.loc[f]['pfRightFemurHead']
-        write_labels(angle=right_hip_angle, name="Right Hip Angle", fr=frame, x=lt_x, y=y_level, size=0.8, boldness=2)
+        write_labels(angle=right_hip_angle, name="Right Hip", fr=frame, x=lt_x, y=y_level, size=0.6, boldness=2)
 
         right_knee_angle = angles_df.loc[f]['pfRightKnee']
-        write_labels(angle=right_knee_angle, name="Right Knee Angle", fr=frame, x=lt_x, y=y_level+200, size=0.8, boldness=2)
+        write_labels(angle=right_knee_angle, name="Right Knee", fr=frame, x=lt_x, y=y_level+100, size=0.6, boldness=2)
 
         right_ankle_angle = angles_df.loc[f]['pfRightAnkle']
-        write_labels(angle=right_ankle_angle, name="Right Ankle Angle", fr=frame, x=lt_x, y=y_level+400, size=0.8, boldness=2)
+        write_labels(angle=right_ankle_angle, name="Right Ankle", fr=frame, x=lt_x, y=y_level+200, size=0.6, boldness=2)
 
         left_hip_angle = angles_df.loc[f]['pfLeftFemurHead']
-        write_labels(angle=left_hip_angle, name="Left Hip Angle", fr=frame, x=rt_x, y=y_level, size=0.8, boldness=2)
+        write_labels(angle=left_hip_angle, name="Left Hip", fr=frame, x=rt_x, y=y_level, size=0.6, boldness=2)
 
         left_knee_angle = angles_df.loc[f]['pfLeftKnee']
-        write_labels(angle=left_knee_angle, name="Left Knee Angle", fr=frame, x=rt_x, y=y_level+200, size=0.8, boldness=2)
+        write_labels(angle=left_knee_angle, name="Left Knee", fr=frame, x=rt_x, y=y_level+100, size=0.6, boldness=2)
 
         left_ankle_angle = angles_df.loc[f]['pfLeftAnkle']
-        write_labels(angle=left_ankle_angle, name="Left Ankle Angle", fr=frame, x=rt_x, y=y_level+400, size=0.8, boldness=2)
+        write_labels(angle=left_ankle_angle, name="Left Ankle", fr=frame, x=rt_x, y=y_level+200, size=0.6, boldness=2)
                 
+        vid_writer.write(frame)
+
+    pbar.close()
+
+    cv_video.release()
+
+def csv_anterior_angles_to_video(video: str, csv: str, videotype='MP4'):
+    '''
+    Set path to csv file, then open the file as a dataframe
+    Find path for the video and import it with cv2 reader
+    Open each frame of the video
+        for the corresponding index
+            take the angles and print them to the screen in the appropriate place
+            write the output video
+    '''
+
+    path_vid = Path(video)
+    print(path_vid)
+    if path_vid.is_file() == False:
+        print("This does not appear to be a correct path for a video file.")
+        return
+    
+    cv_video = cv2.VideoCapture(str(path_vid))
+    nframes = int(cv_video.get(cv2.CAP_PROP_FRAME_COUNT))
+
+    #collect video info for subsequent writing
+    frame_x = int(cv_video.get(3))
+    frame_y = int(cv_video.get(4))
+    fps = cv_video.get(5)
+
+    new_fname = str(path_vid).replace("_labeled.mp4", "_angles.mp4")
+    print(new_fname)
+
+    wider = 380
+    vid_writer = cv2.VideoWriter(str(new_fname), cv2.VideoWriter_fourcc(*'mp4v'), fps, (frame_x + wider, frame_y))
+
+    path_csv = Path(csv)
+    if path_csv.is_file() == False:
+        print("This does not seem to be a correct path to a csv file.")
+        return
+    print(path_csv)
+    #May need to filter angles here
+    angles_df = pd.read_csv(str(path_csv), index_col=0, header=[0,1])
+    angles_df = angles_df.replace(np.nan, 0)
+    angles_df.columns = angles_df.columns.get_level_values(1)
+    
+    pbar = tqdm(total = nframes)
+    for f in range(0, nframes, 1):
+        pbar.update(1)
+        cv_video.set(cv2.CAP_PROP_FRAME_COUNT, f)
+        ok, frame = cv_video.read()
+        if not ok:
+            break
+
+        frame = cv2.copyMakeBorder(frame, 0, 0, int(wider/2), int(wider/2), cv2.BORDER_CONSTANT, value=[0, 0, 0])
+        
+        lt_x = 0
+        rt_x = frame_x + int(wider/2)
+        y_level = 400
+
+        size = 0.6
+
+        right_hip_angle = angles_df.loc[f]['afRightThigh']
+        write_labels(angle=right_hip_angle, name="Right Hip", fr=frame, x=lt_x, y=y_level, size=size, boldness=2)
+
+        right_knee_angle = angles_df.loc[f]['afRightKnee']
+        write_labels(angle=right_knee_angle, name="Right Knee", fr=frame, x=lt_x, y=y_level+100, size=size, boldness=2)
+
+        right_ankle_angle = angles_df.loc[f]['afRightAnkle']
+        write_labels(angle=right_ankle_angle, name="Right Ankle", fr=frame, x=lt_x, y=y_level+200, size=size, boldness=2)
+
+        foot_angle = angles_df.loc[f]['afRightFoot']
+        write_labels(angle=foot_angle, name="Right Foot", fr=frame, x=lt_x, y=y_level+300, size=size, boldness=2)
+
+        left_hip_angle = angles_df.loc[f]['afLeftThigh']
+        write_labels(angle=left_hip_angle, name="Left Hip", fr=frame, x=rt_x, y=y_level, size=size, boldness=2)
+
+        left_knee_angle = angles_df.loc[f]['afLeftKnee']
+        write_labels(angle=left_knee_angle, name="Left Knee", fr=frame, x=rt_x, y=y_level+100, size=size, boldness=2)
+
+        left_ankle_angle = angles_df.loc[f]['afLeftAnkle']
+        write_labels(angle=left_ankle_angle, name="Left Ankle", fr=frame, x=rt_x, y=y_level+200, size=size, boldness=2)
+
+        foot_angle = angles_df.loc[f]['afLeftFoot']
+        write_labels(angle=foot_angle, name="Left Foot", fr=frame, x=rt_x, y=y_level+300, size=size, boldness=2)
+
         vid_writer.write(frame)
 
     pbar.close()
@@ -235,88 +327,7 @@ def csv_left_angles_to_video(video: str, csv: str, rt_y=150, lt_x=75, videotype=
 
     cv_video.release()
 
-def csv_anterior_angles_to_video(video: str, csv: str, videotype='MP4'):
-    '''
-    Set path to csv file, then open the file as a dataframe
-    Find path for the video and import it with cv2 reader
-    Open each frame of the video
-        for the corresponding index
-            take the angles and print them to the screen in the appropriate place
-            write the output video
-    '''
-
-    path_vid = Path(video)
-    print(path_vid)
-    if path_vid.is_file() == False:
-        print("This does not appear to be a correct path for a video file.")
-        return
-    
-    cv_video = cv2.VideoCapture(str(path_vid))
-    nframes = int(cv_video.get(cv2.CAP_PROP_FRAME_COUNT))
-
-    #collect video info for subsequent writing
-    x = int(cv_video.get(3))
-    y_level = int(cv_video.get(4))
-    fps = cv_video.get(5)
-
-    new_fname = str(path_vid).replace("_labeled.mp4", "_angles.mp4")
-    print(new_fname)
-
-    vid_writer = cv2.VideoWriter(str(new_fname), cv2.VideoWriter_fourcc(*'mp4v'), fps, (x, y_level))
-
-    path_csv = Path(csv)
-    if path_csv.is_file() == False:
-        print("This does not seem to be a correct path to a csv file.")
-        return
-    print(path_csv)
-    #May need to filter angles here
-    angles_df = pd.read_csv(str(path_csv), index_col=0, header=[0,1])
-    angles_df = angles_df.replace(np.nan, 0)
-    angles_df.columns = angles_df.columns.get_level_values(1)
-    
-    pbar = tqdm(total = nframes)
-    for f in range(0, nframes, 1):
-        pbar.update(1)
-        cv_video.set(cv2.CAP_PROP_FRAME_COUNT, f)
-        ok, frame = cv_video.read()
-        if not ok:
-            break
-        
-        lt_x = 100
-        rt_x = 600
-        y_level = 400
-
-        right_hip_angle = angles_df.loc[f]['afRightThigh']
-        write_labels(angle=right_hip_angle, name="Right Hip Angle", fr=frame, x=lt_x, y=y_level, size=0.8, boldness=2)
-
-        right_knee_angle = angles_df.loc[f]['afRightKnee']
-        write_labels(angle=right_knee_angle, name="Right Knee Angle", fr=frame, x=lt_x, y=y_level+100, size=0.8, boldness=2)
-
-        right_ankle_angle = angles_df.loc[f]['afRightAnkle']
-        write_labels(angle=right_ankle_angle, name="Right Ankle Angle", fr=frame, x=lt_x, y=y_level+200, size=0.8, boldness=2)
-
-        foot_angle = angles_df.loc[f]['afRightFoot']
-        write_labels(angle=foot_angle, name="Right Foot", fr=frame, x=lt_x, y=y_level+300, size=0.8, boldness=2)
-
-        left_hip_angle = angles_df.loc[f]['afLeftThigh']
-        write_labels(angle=left_hip_angle, name="Left Hip", fr=frame, x=rt_x, y=y_level, size=0.8, boldness=2)
-
-        left_knee_angle = angles_df.loc[f]['afLeftKnee']
-        write_labels(angle=left_knee_angle, name="Left Knee", fr=frame, x=rt_x, y=y_level+100, size=0.8, boldness=2)
-
-        left_ankle_angle = angles_df.loc[f]['afLeftAnkle']
-        write_labels(angle=left_ankle_angle, name="Left Ankle", fr=frame, x=rt_x, y=y_level+200, size=0.8, boldness=2)
-
-        foot_angle = angles_df.loc[f]['afLeftFoot']
-        write_labels(angle=foot_angle, name="Left Foot", fr=frame, x=rt_x, y=y_level+300, size=0.8, boldness=2)
-
-        vid_writer.write(frame)
-
-    pbar.close()
-
-    cv_video.release()
-
 if __name__ == "__main__":
     script, video_path, csv_path = argv
     
-    csv_left_angles_to_video(video_path, csv_path, lt_x=100, rt_y=500)
+    csv_anterior_angles_to_video(video_path, csv_path)
