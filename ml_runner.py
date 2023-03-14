@@ -6,21 +6,24 @@ import joblib
 from plnconstants import home
 
 
-def ml_runner(csv_path):
+def ml_runner(csv_path, planes):
     df = pd.read_csv(csv_path, index_col=0, header=[0,1]) #add ehader arguments
     pd.set_option('display.max_columns', None)
 
+    df_planes = df.loc[:, df.columns.get_level_values(0).isin(planes)]
+
     #adjust scaler to make inquiries into divergent results
     s_scaler = MinMaxScaler()
-    df_scaled = pd.DataFrame(s_scaler.fit_transform(df), columns=df.columns) #Need to strip off both headwers
+    df_scaled = pd.DataFrame(s_scaler.fit_transform(df_planes), columns=df_planes.columns) #Need to strip off both headwers
+    #may be able to keep df data structure and convert to 0 here
     df_array = np.nan_to_num(df_scaled, 0)
 
     #load the model and predict
-    rightleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\leftleg_runlab_model_030823.sav')
+    rightleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\rightleg_Double60_031423.sav')
     rl_predict = rightleg_model.predict(df_array)
     df_rl = pd.DataFrame(rl_predict, columns=['RL - RunLab'])
 
-    leftleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\rightleg_runlab_model_030823.sav')
+    leftleg_model = joblib.load(home + r'\product\stride\root_dir\config_files\ml-models\leftleg_Double60_031423.sav')
     ll_predict = leftleg_model.predict(df_array)
     df_ll = pd.DataFrame(ll_predict, columns=['LL - RunLab'])
     
@@ -44,7 +47,7 @@ def ml_runner(csv_path):
     predictions = pd.concat([df_rl, df_ll], axis='columns') #Columns have different names, so "keys" argument is failing here
     predictions = pd.concat([predictions], axis='columns', keys=['Phase']) #Add level 0 header in seperate step.
 
-    df_angles = pd.DataFrame(s_scaler.inverse_transform(df), columns=df.columns)
+    #df_angles = pd.DataFrame(s_scaler.inverse_transform(df_scaled), columns=df.columns)
 
     final = pd.concat([df, predictions], axis='columns')
 
@@ -54,7 +57,8 @@ def ml_runner(csv_path):
     return print(csv_path + " has been used to generate prediction.")
 
 if __name__ == "__main__":
-    script, csv_path = argv
-    #csv_path = r"root_dir\Subject_1\original_files\angles_tk_091322_sr_ns_analyzed - Copy.csv"
-    ml_runner(csv_path=csv_path)
+    #script, csv_path = argv
+    csv_path = r"C:\Users\14124\Downloads\Pontikos_Eli\angles_ep_031323_sr_s_analyzed - Copy.csv"
+    plns = ['Sagittal Plane Left', 'Sagittal Plane Right']
+    ml_runner(csv_path=csv_path, planes=plns)
 

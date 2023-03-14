@@ -130,7 +130,9 @@ def run_stride(fpl: list):
         elif 'af' in name:
             csv_anterior_angles_to_video(vid, csv_path)
 
-    #ml_runner(csv_path)
+    plns = ['Sagittal Plane Left', 'Sagittal Plane Right']
+
+    ml_runner(csv_path, plns)
 
 if __name__ == '__main__':
     video_list = get_full_path_list(root_dir, '.MP4')
