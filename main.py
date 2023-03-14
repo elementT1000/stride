@@ -101,9 +101,6 @@ def run_stride(fpl: list):
         elif 'af' in name:
             deeplabcut.analyze_videos(anterior_config_file, file, videotype='.MP4')
             deeplabcut.create_labeled_video(anterior_config_file, file, draw_skeleton=True, displaycropped=True, filtered=False)
-        
-    #TODO: Bring over the deeplabcut files that I edited on Big Bertha. 
-    #TODO: Potentially, load up a new t4-dlc library if it can be private.
     
     h5_list = get_file_list(root_dir, fpl, "_filtered.h5", "_analyzed.h5")
     #print(h5_list)
@@ -133,7 +130,7 @@ def run_stride(fpl: list):
         elif 'af' in name:
             csv_anterior_angles_to_video(vid, csv_path)
 
-    ml_runner(csv_path)
+    #ml_runner(csv_path)
 
 if __name__ == '__main__':
     video_list = get_full_path_list(root_dir, '.MP4')
@@ -158,4 +155,4 @@ if __name__ == '__main__':
             f = path_obj.name
             new_path = processed_dir_path / f
             path_obj.rename(new_path)
-    
+

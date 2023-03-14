@@ -7,11 +7,13 @@ posterior_config_file = home + r'\product\stride\root_dir\config_files\pf_config
 
 SAGITTAL_JOINTS = [
     {'Arm': ['Shoulder', 'Elbow']},
+    {'Elbow': ['Elbow']},
     {'Hip': ['Shoulder', 'Hip', 'Knee']},
     {'Knee': ['Hip', 'Knee', 'Ankle']},
     {'Ankle': ['Ankle', 'Knee']},
     {'Heel': ['Heel', 'Ball_of_Foot']},
-    {'Toe': ['Heel', 'Ball_of_Foot', 'Big_Toe']}
+    {'Toe': ['Heel', 'Ball_of_Foot', 'Big_Toe']},
+    {'Ank': ['Ankle']}
 ]
 
 ANTERIOR_FRONTAL_JOINTS = [

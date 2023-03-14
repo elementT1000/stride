@@ -127,12 +127,30 @@ def angle_360(x: float, y: float):
         full_circle = (180 / math.pi) * ang
     return full_circle
 
+def coords_to_csv(dataframe: object, vertex: str):
+    coords = dataframe.values # Return a numpy array
+    n = int(coords.shape[1])//2 # n is equal to # of x,y groups
+    
+    if n == 1:
+        x, y = coords[:, 0], coords[:, 1]
+        x_label = vertex + "X"
+        y_label = vertex + "Y"
+        return pd. DataFrame.from_dict({x_label: x}), pd. DataFrame.from_dict({y_label: y})
+    
+    else:
+        print("Not the right amount of coords for the get_coords function.")
+        pass
+
 def sagittal_angles(raw_dfs: object, state: bool):
     angle_dfs = []
     for vertex, df in raw_dfs.items():
         #Maybe I can just eliminate all of the if-elif-else statements and it will still run
         if vertex == "Arm":
             angle_dfs.append(calculate_angles_from_coordinates(df, vertex, orientation="vertical"))
+        elif vertex == "Elbow":
+            elbow_x, elbow_y = coords_to_csv(df, vertex)
+            angle_dfs.append(elbow_x)
+            angle_dfs.append(elbow_y)
         elif vertex == "Hip":
             angle_dfs.append(calculate_angles_from_coordinates(df, vertex, orientation="hinge", anticlockwise=state))
         elif vertex == "Knee":
@@ -148,6 +166,10 @@ def sagittal_angles(raw_dfs: object, state: bool):
             angle_dfs.append(angle_difference)
         elif vertex == "Toe":
             angle_dfs.append(calculate_angles_from_coordinates(df, vertex, orientation="hinge", dev_from_straight=True))
+        elif vertex == "Ank":
+            ankle_x, ankle_y = coords_to_csv(df, vertex)
+            angle_dfs.append(ankle_x)
+            angle_dfs.append(ankle_y)
         
         sgtl_result = pd.concat(angle_dfs, axis=1)
     side = "Left" if state else "Right"

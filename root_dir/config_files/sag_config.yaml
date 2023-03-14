@@ -6,165 +6,157 @@ multianimalproject: false
 identity:
 
     # Project path (change when moving around)
-project_path: C:\Users\14124\t4_dir\product\stride\root_dir\config_files
+project_path: product\stride\root_dir\config_files
 
     # Annotation data set configuration (and individual video cropping parameters)
 video_sets:
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\bm_0822_sr_ns.MP4:
+  project_path\videos\bm_0822_sr_ns.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\bm_0822_sr_s.MP4:
+  project_path\videos\bm_0822_sr_s.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\bg_0822_sr_ns.MP4:
+  project_path\videos\bg_0822_sr_ns.MP4:
     crop: 100, 770, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\bg_0822_sr_s.MP4:
+  project_path\videos\bg_0822_sr_s.MP4:
     crop: 100, 770, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\ca_0822_sr_ns.MP4:
+  project_path\videos\ca_0822_sr_ns.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\dk_0822_sr_s.MP4:
+  project_path\videos\dk_0822_sr_s.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\ee_0822_sr_s.MP4:
+  project_path\videos\ee_0822_sr_s.MP4:
     crop: 250, 930, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\hr_0822_sr_ns.MP4:
+  project_path\videos\hr_0822_sr_ns.MP4:
     crop: 150, 830, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\hr_0822_sr_s.MP4:
+  project_path\videos\hr_0822_sr_s.MP4:
     crop: 150, 830, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\jm_0822_sr_ns.MP4:
+  project_path\videos\jm_0822_sr_ns.MP4:
     crop: 200, 880, 250, 1450
 
 
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\jm_0822_sl_s.MP4:
+  project_path\videos\jm_0822_sl_s.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\ll_0822_sr_s.MP4:
+  project_path\videos\ll_0822_sr_s.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\ml_0822_sl_ns.MP4:
+  project_path\videos\ml_0822_sl_ns.MP4:
     crop: 150, 830, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\ml_0822_sl_s.MP4:
+  project_path\videos\ml_0822_sl_s.MP4:
     crop: 150, 830, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\nc_0822_sl_ns.MP4:
+  project_path\videos\nc_0822_sl_ns.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\nc_0822_sl_s.MP4:
+  project_path\videos\nc_0822_sl_s.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\rr_0822_sl_ns.MP4:
+  project_path\videos\rr_0822_sl_ns.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\rr_0822_sl_s.MP4:
+  project_path\videos\rr_0822_sl_s.MP4:
     crop: 200, 880, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\we_0822_sl_ns.MP4:
+  project_path\videos\we_0822_sl_ns.MP4:
     crop: 150, 830, 250, 1450
-  C:\Users\14124\Sagittal_Running_Analysis\sagittal network-Ethan-2022-08-31\videos\we_0822_sl_s.MP4:
+  project_path\videos\we_0822_sl_s.MP4:
     crop: 150, 830, 250, 1450
-  #C:\Users\14124\Running_Analysis\Sagittal\videos\bl_0822_sl_ns.MP4:
+  #project_path\videos\bl_0822_sl_ns.MP4:
   #  crop: 150, 930, 250, 1450
-  #C:\Users\14124\Running_Analysis\Sagittal\videos\bl_0822_sl_s.MP4:
+  #project_path\videos\bl_0822_sl_s.MP4:
   #  crop: 150, 930, 250, 1450
-  #C:\Users\14124\Running_Analysis\Sagittal\videos\bl_0822_sr_ns.MP4:
+  #project_path\videos\bl_0822_sr_ns.MP4:
   #  crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\bl_0822_sr_s.MP4:
+  project_path\videos\bl_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  #C:\Users\14124\Running_Analysis\Sagittal\videos\cs_0822_sl_ns.MP4:
+  #project_path\videos\cs_0822_sl_ns.MP4:
   #  crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\cs_0822_sl_s.MP4:
+  project_path\videos\cs_0822_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\cs_0822_sr_ns.MP4:
+  project_path\videos\cs_0822_sr_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\cs_0822_sr_s.MP4:
+  project_path\videos\cs_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\kb_0822_sl_ns.MP4:
+  project_path\videos\kb_0822_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\kb_0822_sl_s.MP4:
+  project_path\videos\kb_0822_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\kb_0822_sr_ns.MP4:
+  project_path\videos\kb_0822_sr_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\kb_0822_sr_s.MP4:
+  project_path\videos\kb_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\pe_0822_sl_ns.MP4:
+  project_path\videos\pe_0822_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\pe_0822_sl_s.MP4:
+  project_path\videos\pe_0822_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\pe_0822_sr_ns.MP4:
+  project_path\videos\pe_0822_sr_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\pe_0822_sr_s.MP4:
+  project_path\videos\pe_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\pr_0822_sl_ns.MP4:
+  project_path\videos\pr_0822_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\pr_0822_sl_s.MP4:
+  project_path\videos\pr_0822_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\pr_0822_sr_ns.MP4:
+  project_path\videos\pr_0822_sr_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\pr_0822_sr_s.MP4:
+  project_path\videos\pr_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\rr_0822_sl_ns.MP4:
+  project_path\videos\rv_0822_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\rr_0822_sl_s.MP4:
+  project_path\videos\rv_0822_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\rr_0822_sr_ns.MP4:
+  project_path\videos\rv_0822_sr_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\rr_0822_sr_s.MP4:
+  project_path\videos\rv_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\rv_0822_sl_ns.MP4:
+  project_path\videos\seanm_0822_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\rv_0822_sl_s.MP4:
+  project_path\videos\seanm_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\rv_0822_sr_ns.MP4:
+  project_path\videos\shellym_0822_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\rv_0822_sr_s.MP4:
+  project_path\videos\shellym_0822_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\seanm_0822_sl_s.MP4:
+  project_path\videos\shellym_0822_sr_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\seanm_0822_sr_s.MP4:
+  project_path\videos\shellym_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\shellym_0822_sl_ns.MP4:
+  project_path\videos\sk_0822_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\shellym_0822_sl_s.MP4:
+  project_path\videos\sk_0822_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\shellym_0822_sr_ns.MP4:
+  project_path\videos\sk_0822_sr_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\shellym_0822_sr_s.MP4:
+  project_path\videos\sk_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\sk_0822_sl_ns.MP4:
+  project_path\videos\td_0822_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\sk_0822_sl_s.MP4:
+  project_path\videos\td_0822_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\sk_0822_sr_ns.MP4:
+  project_path\videos\ga_0922_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\sk_0822_sr_s.MP4:
+  project_path\videos\ga_0922_sr_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\td_0822_sl_s.MP4:
+  project_path\videos\sa_0922_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\td_0822_sr_s.MP4:
+  project_path\videos\sa_0922_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\ga_0922_sl_ns.MP4:
+  project_path\videos\tt_0922_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\ga_0922_sr_ns.MP4:
-    crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\sa_0922_sl_s.MP4:
-    crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\sa_0922_sr_s.MP4:
-    crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\tt_0922_sl_ns.MP4:
-    crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\tt_0922_sr_ns.MP4:
+  project_path\videos\tt_0922_sr_ns.MP4:
     crop: 150, 930, 250, 1450
 
   #Tony set 1
-  C:\Users\14124\Running_Analysis\Sagittal\videos\ba_091322_sl_s.MP4:
+  project_path\videos\ba_091322_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\ba_091322_sr_s.MP4:
+  project_path\videos\ba_091322_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\cs_091322_sl_s.MP4:
+  project_path\videos\cs_091322_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\cs_091322_sr_s.MP4:
+  project_path\videos\cs_091322_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\gr_100322_sl_ns.MP4:
+  project_path\videos\gr_100322_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\gr_100322_sr_ns.MP4:
+  project_path\videos\gr_100322_sr_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\kd_091322_sl_s.MP4:
+  project_path\videos\kd_091322_sl_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\kd_091322_sr_s.MP4:
+  project_path\videos\kd_091322_sr_s.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\kg_091322_sl_ns.MP4:
+  project_path\videos\kg_091322_sl_ns.MP4:
     crop: 150, 930, 250, 1450
-  C:\Users\14124\Running_Analysis\Sagittal\videos\kg_091322_sr_ns.MP4:
+  project_path\videos\kg_091322_sr_ns.MP4:
     crop: 150, 930, 250, 1450
 
 bodyparts:
@@ -176,10 +168,6 @@ bodyparts:
 - Heel
 - Ball_of_Foot
 - Big_Toe
-
-    # Fraction of video to start/stop when extracting frames for labeling/refinement
-
-    # Fraction of video to start/stop when extracting frames for labeling/refinement
 
     # Fraction of video to start/stop when extracting frames for labeling/refinement
 start: 0
